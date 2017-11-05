@@ -1,0 +1,10 @@
+npm install --save react-redux redux
+
+npm install --save firebase
+// also requires setup in firebase and putting web setup code in App.js
+
+npm install --save redux-thunk
+// this didn't work for some reason :(
+npm uninstall redux-thunk
+
+yarn add redux-thunk
