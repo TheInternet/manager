@@ -1,4 +1,6 @@
+import { NavigationActions } from 'react-navigation'
 import firebase from 'firebase';
+
 
 import {
     EMAIL_CHANGED,
@@ -23,12 +25,12 @@ export const passwordChanged = (text) => {
 };
 
 // example of Redux Thunk to perform action async by using dispatch function
-export const loginUser = ({ email, password }) => {
+export const loginUser = ({ email, password, navigation }) => {
     return (dispatch) => {
         dispatch({ type: LOGIN_USER });
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(user => loginUserSuccess(dispatch, user))
+            .then(user => loginUserSuccess(dispatch, user, navigation))
             .catch((error) => {
                 console.log(error);
 
@@ -43,10 +45,12 @@ const loginUserFail = (dispatch) => {
     dispatch({ type: LOGIN_USER_FAIL });
 }
 
-const loginUserSuccess = (dispatch, user) => {
+const loginUserSuccess = (dispatch, user, navigation) => {
     dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: user
     });
+
+    dispatch(navigation.navigate('Details'));
 }
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardSection, TextField, Button, Spinner } from './common';
+import { Card, CardSection, TextField, Button, Spinner } from '../components/common';
 import { emailChanged, passwordChanged, loginUser } from './../actions';
 
-class LoginForm extends Component {
+class LoginScreen extends Component {
 
     onEmailChange(text) {
         this.props.emailChanged(text);
@@ -15,9 +15,10 @@ class LoginForm extends Component {
     }
 
     onButtonPress() {
-        const { email, password } = this.props;
+        const { email, password, navigation } = this.props;
 
-        this.props.loginUser({ email, password });
+        this.props.loginUser({ email, password, navigation });
+
     }
 
     renderButton() {
@@ -34,6 +35,7 @@ class LoginForm extends Component {
 
     render() {
         return (
+            <View style={styles.backgroundViewStyle}>
             <Card>
                 <CardSection>
                     <TextField
@@ -63,6 +65,7 @@ class LoginForm extends Component {
                 </CardSection>
 
             </Card>
+                </View>
         );
     }
 }
@@ -72,6 +75,10 @@ const styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red',
+    },
+    backgroundViewStyle: {
+        flex: 1,
+        backgroundColor: 'white',
     }
 }
 
@@ -86,4 +93,4 @@ const mapStateToProps = ({ auth })=> {
 }
 
 export default connect(mapStateToProps,
-    { emailChanged, passwordChanged, loginUser })(LoginForm);
+    { emailChanged, passwordChanged, loginUser })(LoginScreen);

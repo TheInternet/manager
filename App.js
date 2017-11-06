@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './src/reducers';
-import LoginForm from './src/components/LoginForm';
+import RootNavigator from './src/navigation/RootNavigator'
 
 import { FIREBASE_API_KEY } from './config';
 
@@ -28,7 +28,7 @@ class App extends Component<{}> {
 
         return (
             <Provider store={store} >
-              <LoginForm />
+                <RootNavigator/>
             </Provider>
         );
     }
