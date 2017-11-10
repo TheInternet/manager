@@ -3,11 +3,10 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
-import reducers from './src/reducers';
-import RootNavigator from './src/navigation/RootNavigator'
+import reducers from './src/reducers/index';
+import AppWithNavigationState from './src/navigation/AppNavigator';
 
 import { FIREBASE_API_KEY } from './config';
-
 
 class App extends Component<{}> {
     componentWillMount() {
@@ -28,7 +27,7 @@ class App extends Component<{}> {
 
         return (
             <Provider store={store} >
-                <RootNavigator/>
+                <AppWithNavigationState />
             </Provider>
         );
     }

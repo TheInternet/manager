@@ -4,6 +4,7 @@
   "dependencies": {
     "expo": "^22.0.0",
     "firebase": "^4.6.1",
+    "prop-types": "^15.6.0",
     "react": "16.0.0-beta.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-22.0.2.tar.gz",
     "react-navigation": "^1.0.0-beta.19",
@@ -14,5 +15,8 @@
   "name": "manager-expo",
   "version": "0.0.0",
   "description": "Hello Expo!",
-  "author": null
+  "author": null,
+  "devDependencies": {
+    "eslint-config-rallycoding": "^3.2.0"
+  }
 }
