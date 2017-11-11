@@ -22,3 +22,9 @@ You can use prop-types to document the intended types of properties passed to co
 React (and potentially other libraries—see the checkPropTypes() reference below) will check
 props passed to your components against those definitions, and warn in development if they don’t match.
 */
+
+npm install --save lodash
+// has helper methods for working with objects and arrays
+
+npm install react-native-elements --save
+// lots of UI stuff

@@ -86,7 +86,7 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-    const { name, phone_number, shift, error, loading } = state.employee;
+    const { name, phone_number, shift, error, loading } = state.employeeForm;
 
     // this syntax is equivalent to email: state.auth.email
     // once you deconstruct auth from passed in state and email from auth

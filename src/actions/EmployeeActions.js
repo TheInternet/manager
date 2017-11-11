@@ -8,16 +8,13 @@ import {
     EMPLOYEES_FETCH_SUCCESS,
 } from './types';
 
-export const employeeInfoChanged = ({ prop, value }) => {
-    return {
+export const employeeInfoChanged = ({ prop, value }) => ({
         type: EMPLOYEE_INFO_CHANGED,
         payload: { prop, value }
-    };
-};
+    });
 
 // example of Redux Thunk to perform action async by using dispatch function
-export const employeeCreate = ({name, phone_number, shift}) => {
-
+export const employeeCreate = ({ name, phone_number, shift }) => {
     const { currentUser } = firebase.auth();
 
     // even though async, we don't need to a response, this is just a push
@@ -28,7 +25,7 @@ export const employeeCreate = ({name, phone_number, shift}) => {
         firebase.database().ref(`users/${currentUser.uid}/employees`)
             .push({ name, phone_number, shift })
             .then(() => {
-            dispatch({ type: EMPLOYEE_CREATE })
+            dispatch({ type: EMPLOYEE_CREATE });
             dispatch(NavigationActions.back());
             });
     };
@@ -45,4 +42,5 @@ export const employeesFetch = () => {
                 dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
             });
     };
-}
+};
+
