@@ -1,28 +1,23 @@
 import {
     EMPLOYEE_INFO_CHANGED,
-    EMPLOYEE_CREATE,
+    EMPLOYEE_SELECT,
+    EMPLOYEE_CLEAR_FORM,
 } from '../actions/types';
 
 const INITIAL_STATE = {
     name: '',
     phone_number: '',
     shift: '',
-    error: '',
-    loading: false
 };
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case EMPLOYEE_INFO_CHANGED:
-            /*
-            [] is not an array, its called key interpolation from es6
-            it is equivalent to:
-            const newState = {};
-            newState[action.payload.prop] = action.payload.value
-             */
             return { ...state, [action.payload.prop]: action.payload.value };
-        case EMPLOYEE_CREATE:
+        case EMPLOYEE_CLEAR_FORM:
             return { ...state, ...INITIAL_STATE };
+        case EMPLOYEE_SELECT:
+            return action.payload;
         default:
             return state;
     }

@@ -1,10 +1,12 @@
 import { StackNavigator } from 'react-navigation';
 import EmployeesList from '../components/EmployeesList';
-import EmployeeForm from '../components/EmployeeForm';
+import EmployeeCreate from '../components/EmployeeCreate';
+import EmployeeEdit from '../components/EmployeeEdit';
 
 const routeConfigs = {
     EmployeesList: { screen: EmployeesList },
-    EmployeeForm: { screen: EmployeeForm }
+    EmployeeCreate: { screen: EmployeeCreate },
+    EmployeeEdit: { screen: EmployeeEdit }
 };
 
 const stackNavigatorConfigs = {

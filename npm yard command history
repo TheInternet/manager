@@ -1,3 +1,6 @@
+https://www.npmjs.com
+
+
 npm install --save-dev eslint-config-rallycoding
 // create .eslintrc at top level outside of /src with:
 // not yet clear this worked?
@@ -27,4 +30,6 @@ npm install --save lodash
 // has helper methods for working with objects and arrays
 
 npm install react-native-elements --save
-// lots of UI stuff
+// tried to remove but expo complained - ?
+
+npm install --save react-native-communications

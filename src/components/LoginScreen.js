@@ -95,5 +95,9 @@ const mapStateToProps = (state) => {
     return { email, password, error, loading, };
 };
 
+
+// connect([mapStateToProps], [mapDispatchToProps], [mergeprops], [options])
+// redux + react navigation: to enable dispatch must create actions & connect to components w/ nav
+// e.g. loginUser (on this form) or employeeSelect (on employeeListItem)
 export default connect(mapStateToProps,
     { emailChanged, passwordChanged, loginUser })(LoginScreen);

@@ -1,38 +1,22 @@
 import React, { Component } from 'react';
-import { Picker, Text } from 'react-native';
+import { Picker, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardSection, TextField, Button } from './common/index';
-import {
-    employeeInfoChanged,
-    employeeCreate,
-} from '../actions/index';
+import { CardSection, TextField } from './common/index';
+import { employeeInfoChanged } from '../actions/index';
 
 class EmployeeForm extends Component {
-
-    static navigationOptions = {
-        title: 'Add employee',
-    }
-
-    onButtonPress() {
-        console.log('onButtonPress: saveEmployee START');
-        const { name, phone_number, shift } = this.props;
-
-        // picker's default value is not 'selected'
-        this.props.employeeCreate({ name, phone_number, shift: shift || 'Monday' });
-        console.log('onButtonPress: saveEmployee END');
-    }
 
 
     render() {
         return (
-            <Card>
+            <View>
                 <CardSection>
                     <TextField
                         fieldName='Name'
                         placeholder="Enter their name"
                         onChangeText={text => this.props.employeeInfoChanged(
                             { prop: 'name', value: text }
-                            )}
+                        )}
                         value={this.props.name}
                     />
                 </CardSection>
@@ -43,8 +27,8 @@ class EmployeeForm extends Component {
                         placeholder="Enter their number"
                         onChangeText={text => this.props.employeeInfoChanged(
                             { prop: 'phone_number', value: text }
-                            )}
-                        value={this.props.phoneNumber}
+                        )}
+                        value={this.props.phone_number}
                     />
                 </CardSection>
 
@@ -65,17 +49,11 @@ class EmployeeForm extends Component {
 
                     </Picker>
                 </CardSection>
-
-                <CardSection>
-                    <Button onPress={this.onButtonPress.bind(this)}>
-                        Add
-                    </Button>
-                </CardSection>
-            </Card>
+            </View>
         );
     }
-
 }
+
 
 const styles = {
     pickerLabelStyle: {
@@ -85,15 +63,8 @@ const styles = {
     },
 }
 
-const mapStateToProps = (state) => {
-    const { name, phone_number, shift, error, loading } = state.employeeForm;
+// mapStateToProps for name, phone_number, and shift happens in parents
 
-    // this syntax is equivalent to email: state.auth.email
-    // once you deconstruct auth from passed in state and email from auth
-    return { name, phone_number, shift, error, loading };
-};
-
-export default connect(mapStateToProps, {
+export default connect(null, {
         employeeInfoChanged,
-        employeeCreate,
     })(EmployeeForm);
